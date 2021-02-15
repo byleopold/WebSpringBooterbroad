@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Admin</title>
+    <script type="text/javascript">
+        let checked = false;
+
+        function checkedAll() {
+            const aa = document.getElementById("frm1");
+            if (checked == false) {
+                checked = true
+            } else {
+                checked = false
+            }
+            for (let i = 0; i < aa.elements.length; i++) {
+                aa.elements[i].checked = checked;
+            }
+        }
+    </script>
+</head>
+
+<body>
+<style>
+    table {
+        width: 100%;
+        font-size: 18px;
+    }
+    h2 {
+        margin-bottom: 80px;
+        margin-top: 20px;
+    }
+</style>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+<form id="frm1" method="post" th:action="@{/admin}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <h2 class="" align="center" th:text="'Hello, ' +  ${usr} + '!'"></h2>
+    </div>
+    <div align="center">
+        <button type="submit" name="block" class="btn btn-outline-dark" ><b>Block</b></button>
+        <button type="submit" name="unblock" class="btn btn-outline-dark"><b>Unblock</b></button>
+         <button type="submit" name="delete" class="btn btn-outline-dark"><b>Delete</b></button>
+        <table class="table-primary, table-striped" align="center">
+            <thead>
+            <th title="Select all/remove selection"><input type="checkbox" onclick='checkedAll();'></th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Register date</th>
+            <th>Last login</th>
+            <th>Status</th>
+
+            </thead>
+            <th:block th:each="user : ${allUsers}">
+                <tr>
+                    <td height="25"><input type="checkbox" th:name="${user.id}"></td>
+                    <td>
+                        <th:block th:text="${user.id}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:text="${user.username}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:text="${user.email}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:text="${user.registerDate}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:text="${user.lastLoginDate}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:text="${user.status}"></th:block>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</form>
+</body>
+</html>
