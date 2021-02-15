@@ -23,12 +23,12 @@ public class User implements UserDetails {
     @NotBlank(message = "Name is empty")
     @Size(min = 1, message = "Name")
     private String username;
-    @Email(message = "Enter correct email")
-    @NotBlank(message = "Email is empty")
+
+    @NotBlank(message = "Password is empty")
     @Size(min = 1, message = "Password")
     private String password;
 
-
+    @Email(message = "Enter correct email")
     @Size(min = 1, message = "Email")
     @NotBlank(message = "Email is empty")
     private String email;
