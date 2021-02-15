@@ -5,8 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.servlet.http.HttpSession;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+
 import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
