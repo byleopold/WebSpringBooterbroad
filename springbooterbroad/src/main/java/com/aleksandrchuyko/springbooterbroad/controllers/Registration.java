@@ -3,6 +3,7 @@ package com.aleksandrchuyko.springbooterbroad.controllers;
 
 import com.aleksandrchuyko.springbooterbroad.domain.User;
 import com.aleksandrchuyko.springbooterbroad.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,11 +15,9 @@ import javax.validation.Valid;
 @Controller
 public class Registration {
 
-    private final UserService userService;
 
-    public Registration(UserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/registration")
     public String registration() {

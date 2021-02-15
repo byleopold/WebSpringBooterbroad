@@ -4,6 +4,7 @@ package com.aleksandrchuyko.springbooterbroad.controllers;
 import com.aleksandrchuyko.springbooterbroad.domain.User;
 import com.aleksandrchuyko.springbooterbroad.service.Session;
 import com.aleksandrchuyko.springbooterbroad.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +19,13 @@ import java.util.Map;
 @Controller
 public class UsersTable {
 
-    private final UserService userService;
+    @Autowired
+    private  UserService userService;
 
-    private final Session session;
+    @Autowired
+    private  Session session;
 
-    public UsersTable(UserService userService, Session session) {
-        this.userService = userService;
-        this.session = session;
-    }
+
 
     @GetMapping("/admin")
     public String userList(Model model, HttpSession session) {

@@ -3,6 +3,7 @@ package com.aleksandrchuyko.springbooterbroad.service;
 
 import com.aleksandrchuyko.springbooterbroad.domain.User;
 import com.aleksandrchuyko.springbooterbroad.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,13 +15,12 @@ import java.util.List;
 @Service
 public class UserService implements UserDetailsService {
 
-    final UserRepository userRepository;
-    final PasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    UserRepository userRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
